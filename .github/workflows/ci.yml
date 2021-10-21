@@ -19,7 +19,7 @@ jobs:
           MYSQL_USER: adminDB
           MYSQL_PASSWORD: simaS123
           MYSQL_ROOT_PASSWORD: simaS123
-          MYSQL_DATABASE: targetaccountdb
+          MYSQL_DATABASE: savedbillpaymentdb
         ports:
           - 3307:3306
         options: >-
