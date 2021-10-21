@@ -7,10 +7,10 @@ import (
 )
 
 type SavedBillPayment struct {
-	ID           int32          `json:"id"`
-	MerchantID   int32          `json:"merchant_id"`
-	CustomerID   int32          `json:"customer_id"`
-	SubsciberNo  int32          `json:"subsciber_no"`
+	ID           int64          `json:"id"`
+	MerchantID   int64          `json:"merchant_id"`
+	CustomerID   int64          `json:"customer_id"`
+	SubsciberNo  int64          `json:"subsciber_no"`
 	Description  sql.NullString `json:"description"`
 	Isshowib     sql.NullString `json:"isshowib"`
 	Isshowmobile sql.NullString `json:"isshowmobile"`

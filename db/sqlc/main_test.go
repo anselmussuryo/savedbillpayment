@@ -5,22 +5,27 @@ import (
 	"log"
 	"os"
 	"testing"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 var testQueries *Queries
+var testDB *sql.DB
 
 const (
-	dbDriver = "posgres"
-	dbSource = "mysql://adminDB:simaS123@tcp(localhost:3307)/savedbillpaymentdb"
+	dbDriver = "mysql"
+	dbSource = "adminDB:simaS123@(localhost:3307)/savedbillpaymentdb"
 )
 
 func TestMain(m *testing.M) {
-	conn, err := sql.Open(dbDriver, dbSource)
+	var err error
+
+	testDB, err := sql.Open(dbDriver, dbSource)
 	if err != nil {
 		log.Fatal("cannot connect to db", err)
 	}
 
-	testQueries = New(conn)
+	testQueries = New(testDB)
 
 	os.Exit(m.Run())
 }

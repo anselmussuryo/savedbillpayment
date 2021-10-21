@@ -1,8 +1,8 @@
 CREATE TABLE `saved_bill_payment` (
-  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `merchant_id` int NOT NULL,
-  `customer_id` int NOT NULL,
-  `subsciber_no` int NOT NULL,
+  `id` bigint PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `merchant_id` bigint NOT NULL,
+  `customer_id` bigint NOT NULL,
+  `subsciber_no` bigint NOT NULL,
   `description` varchar(255),
   `isshowib` varchar(5),
   `isshowmobile` varchar(5),

@@ -24,9 +24,9 @@ INSERT INTO saved_bill_payment (
 `
 
 type CreateSavedBillPaymentParams struct {
-	MerchantID   int32          `json:"merchant_id"`
-	CustomerID   int32          `json:"customer_id"`
-	SubsciberNo  int32          `json:"subsciber_no"`
+	MerchantID   int64          `json:"merchant_id"`
+	CustomerID   int64          `json:"customer_id"`
+	SubsciberNo  int64          `json:"subsciber_no"`
 	Description  sql.NullString `json:"description"`
 	Isshowib     sql.NullString `json:"isshowib"`
 	Isshowmobile sql.NullString `json:"isshowmobile"`
@@ -52,7 +52,7 @@ DELETE FROM saved_bill_payment
 WHERE id = ?
 `
 
-func (q *Queries) DeleteSavedBillPayment(ctx context.Context, id int32) error {
+func (q *Queries) DeleteSavedBillPayment(ctx context.Context, id int64) error {
 	_, err := q.db.ExecContext(ctx, deleteSavedBillPayment, id)
 	return err
 }
@@ -62,7 +62,7 @@ SELECT id, merchant_id, customer_id, subsciber_no, description, isshowib, isshow
 WHERE id = ? LIMIT 1
 `
 
-func (q *Queries) GetSavedBillPayment(ctx context.Context, id int32) (SavedBillPayment, error) {
+func (q *Queries) GetSavedBillPayment(ctx context.Context, id int64) (SavedBillPayment, error) {
 	row := q.db.QueryRowContext(ctx, getSavedBillPayment, id)
 	var i SavedBillPayment
 	err := row.Scan(
@@ -131,15 +131,15 @@ WHERE id = ?
 `
 
 type UpdateSavedBillPaymentParams struct {
-	MerchantID   int32          `json:"merchant_id"`
-	CustomerID   int32          `json:"customer_id"`
-	SubsciberNo  int32          `json:"subsciber_no"`
+	MerchantID   int64          `json:"merchant_id"`
+	CustomerID   int64          `json:"customer_id"`
+	SubsciberNo  int64          `json:"subsciber_no"`
 	Description  sql.NullString `json:"description"`
 	Isshowib     sql.NullString `json:"isshowib"`
 	Isshowmobile sql.NullString `json:"isshowmobile"`
 	Amount       sql.NullString `json:"amount"`
 	Isfavorite   sql.NullString `json:"isfavorite"`
-	ID           int32          `json:"id"`
+	ID           int64          `json:"id"`
 }
 
 func (q *Queries) UpdateSavedBillPayment(ctx context.Context, arg UpdateSavedBillPaymentParams) error {

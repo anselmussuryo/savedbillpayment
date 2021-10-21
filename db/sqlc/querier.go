@@ -9,8 +9,8 @@ import (
 
 type Querier interface {
 	CreateSavedBillPayment(ctx context.Context, arg CreateSavedBillPaymentParams) (sql.Result, error)
-	DeleteSavedBillPayment(ctx context.Context, id int32) error
-	GetSavedBillPayment(ctx context.Context, id int32) (SavedBillPayment, error)
+	DeleteSavedBillPayment(ctx context.Context, id int64) error
+	GetSavedBillPayment(ctx context.Context, id int64) (SavedBillPayment, error)
 	ListSavedBillPayment(ctx context.Context, arg ListSavedBillPaymentParams) ([]SavedBillPayment, error)
 	UpdateSavedBillPayment(ctx context.Context, arg UpdateSavedBillPaymentParams) error
 }
