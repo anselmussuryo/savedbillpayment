@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = ".;pb";
+
+message SavedBillPayment {
+    int64 MerchantID = 1;
+    int64 CustomerID = 2;
+    int64 SubsciberNo = 3;
+    string Description = 4;
+    string Isshowib = 5;
+    string Isshowmobile = 6;
+    double Amount = 7;
+    string Isfavorite = 8;
+}

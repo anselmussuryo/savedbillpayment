@@ -58,3 +58,8 @@ func RandomCurrency() string {
 func RandomEmail() string {
 	return fmt.Sprintf("%s@email.com", RandomString(6))
 }
+
+// RandomBool generates a random boolean
+func RandomBool() bool {
+	return rand.Intn(2) == 1
+}

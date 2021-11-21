@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = ".;pb";
+
+import "savedbillpayment_message.proto";
+
+message CreateSavedBillPaymentRequest {
+    SavedBillPayment savedBillPayment = 1;
+}
+
+message CreateSavedBillPaymentResponse {
+    string id = 1;
+}
+
+service SavedBillPaymentService {
+    rpc CreateSavedBillPayment(CreateSavedBillPaymentRequest) returns (CreateSavedBillPaymentResponse) {
+        // option (google.api.http) = {
+        //   post : "/v1/savedbillpayment/create"
+        //   body : "*"
+        // };
+    };
+    //   rpc SearchLaptop(SearchLaptopRequest) returns (stream SearchLaptopResponse) {
+    //     option (google.api.http) = {
+    //       get : "/v1/savedbillpayment/search"
+    //     };
+    //   };
+    //   rpc UploadImage(stream UploadImageRequest) returns (UploadImageResponse) {
+    //     option (google.api.http) = {
+    //       post : "/v1/savedbillpayment/upload_image"
+    //       body : "*"
+    //     };
+    //   };
+    //   rpc RateLaptop(stream RateLaptopRequest) returns (stream RateLaptopResponse) {
+    //     option (google.api.http) = {
+    //       post : "/v1/savedbillpayment/rate"
+    //       body : "*"
+    //     };
+    //   };
+}

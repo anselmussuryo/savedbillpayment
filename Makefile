@@ -20,6 +20,16 @@ migratedown:
 	migrate -path db/migration -database "mysql://adminDB:simaS123@tcp(localhost:3307)/savedbillpaymentdb" -verbose down
 
 test:
-	go test -v -cover ./...
+	go test -v -cover -race ./...
 
-.PHONY: mysql mysqlWithCopyData mysqlrm migrateup migratedown sqlc
+clean:
+	rm pb/*
+	rm swagger/*
+
+gen:
+	protoc --proto_path=proto proto/*.proto  --go_out=:pb --go-grpc_out=:pb --grpc-gateway_out=:pb --openapiv2_out=:swagger
+
+run:
+	go run main.go
+
+.PHONY: mysql mysqlWithCopyData mysqlrm migrateup migratedown sqlc protoc-gen protoc-clean run
